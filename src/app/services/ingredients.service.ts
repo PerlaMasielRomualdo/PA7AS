@@ -21,9 +21,9 @@ export class IngredientsService {
       addIngredients(auxIngredients: Ingredient[]){
           for(const i of auxIngredients){
               //this.ingredients.push(i);
-              var ingadd = this.ingredients.find(Ingredient => Ingredient.name === i.name);
-              if (ingadd !== undefined) {
-                ingadd.amount = ingadd.amount + i.amount;
+              var sendIng = this.ingredients.find(Ingredient => Ingredient.name === i.name);
+              if (sendIng !== undefined) {
+                sendIng.amount = sendIng.amount + i.amount;
               }else {
                 this.ingredients.push(i);
           }
