@@ -5,7 +5,7 @@ import { IngredientsService } from "./ingredients.service";
 
 @Injectable()//Permite injectar un servicio dentro de otro servicio
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
+    //recipeSelected = new EventEmitter<Recipe>();
     
     private recipes: Recipe[] = [
         new Recipe('A test recipe 1', 'This is a simply test ', 'https://cocina-casera.com/mx/wp-content/uploads/2018/01/tacoas-de-carne-enchilada.jpg', 
@@ -28,6 +28,10 @@ export class RecipeService {
     }
       getRecipes(){
           return this.recipes.slice();
+      }
+
+      getRecipe(index: number){//Recibir la receta y su posicion
+          return this.recipes[index];
       }
       
       addIngredientsToShoppingList(ingredients: Ingredient[]){
