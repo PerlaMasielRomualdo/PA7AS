@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit, OnDestroy {
+export class ShoppingEditComponent implements OnInit, OnDestroy{
 
   //@ViewChild('nameInput') nameInputRef: ElementRef;
   //@ViewChild('amountInput') amountInputRef: ElementRef;
