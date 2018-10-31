@@ -21,5 +21,8 @@ export class ShoppingListComponent implements OnInit {
       })
     );
   }
+  onEditItem(index: number){
+    this.ingredientsService.startedEditing.next(index);
+  }
 
 }
