@@ -38,5 +38,9 @@ export class IngredientsService {
           }
           this.ingredientsChanged.next(this.ingredients.slice());
       }
-}
+    }
+    onDelete(index: number){
+        this.ingredients.splice(index, 1);
+        this.ingredientsChanged.next(this.ingredients.slice());
+    }
 }
