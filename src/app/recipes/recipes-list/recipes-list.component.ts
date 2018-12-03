@@ -12,17 +12,24 @@ export class RecipesListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   recipes:Recipe[];
+  Subcription;
 
   constructor(private recipeService: RecipeService, 
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.Subcription = this.recipeService.UpdateRecipe.subscribe((r)=>{
+      this.recipes = [];
+      this.recipes = this.recipeService.getRecipes();
+    })
     this.recipes = this.recipeService.getRecipes();
   }
-
   onNewRecipe(){
     this.router.navigate(['new'], {relativeTo: this.route});
   }
+  //ngOnDestroy(){
+    //this.Subcription.unsubscribe();
+  //}
 
 }

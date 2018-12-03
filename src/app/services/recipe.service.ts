@@ -2,10 +2,11 @@ import { Recipe } from "../recipes/recipe.model";
 import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { IngredientsService } from "./ingredients.service";
+import { Subject } from "rxjs";
 
 @Injectable()//Permite injectar un servicio dentro de otro servicio
 export class RecipeService {
-    //recipeSelected = new EventEmitter<Recipe>();
+    UpdateRecipe = new Subject<Recipe[]>();
     
     private recipes: Recipe[] = [
         new Recipe('A test recipe 1', 'This is a simply test ', 'https://cocina-casera.com/mx/wp-content/uploads/2018/01/tacoas-de-carne-enchilada.jpg', 
@@ -36,5 +37,19 @@ export class RecipeService {
       
       addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.ingredientsService.addIngredients(ingredients);
+      }
+
+      addRecipe(recipe: Recipe){
+          this.recipes.push(recipe);
+          this.UpdateRecipe.next(this.recipes.slice());
+      }
+
+      updateRecipe(index: number, recipe: Recipe){
+          this.recipes[index] = recipe;
+      }
+
+      onDeleteRecipe(id: number){
+          this.recipes.splice(id, 1);
+          this.UpdateRecipe.next(this.recipes.slice());
       }
 }
