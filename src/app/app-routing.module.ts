@@ -5,6 +5,7 @@ import { NgModule, Component } from '@angular/core';
 import { RecipeStarComponent } from './recipes/recipe-star/recipe-star.component';
 import { RecipesDetailComponent } from './recipes/recipes-detail/recipes-detail.component';
 import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
             { path: '', component: RecipeStarComponent},
             { path: 'new', component: RecipesEditComponent},
             { path: ':id', component: RecipesDetailComponent},
-            { path: ':id/edit', component: RecipesEditComponent}
+            { path: ':id/edit', component: RecipesEditComponent},
+            { path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard]}
         ]
     },
     {
