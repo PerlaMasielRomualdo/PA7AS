@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/guards/auth.service';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -15,12 +14,11 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   onSignup(form: NgForm){
-    const email = form.value.email;
-    const password = form.value.password;
-
+    const email= form.value.email;
+    const password= form.value.password;
     this.authService.login(email, password);
-    this.router.navigate(['/recipes']);  
+    this.router.navigate(['/recipes']);
   }
 }

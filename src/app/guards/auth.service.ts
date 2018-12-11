@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
-import { logging } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor() { }
-
-  private isLoggedIn: boolean = false;
+  private isloggedIn: boolean = false;
   
-  login(email: string, password: string): boolean{
-    if(email == "perla@gmail.com" && password == "12345"){
-      console.log(email == "perla@gmail.com" && password == "12345")
-      this.isLoggedIn = true;
-    }else{
-      this.isLoggedIn = false;
+  login(email: String, password: String): boolean {
+    if (email == "perla@gmail.com" && password == "12345") {
+      this.isloggedIn = true;
+    } else {
+      this.isloggedIn = false;
     }
-    return this.isLoggedIn;
+    return this.isloggedIn;
   }
-  isUserLoggedIn(){
-    return this.isLoggedIn;
+
+  isUserLoggedIn() {
+    return this.isUserLoggedIn;
   }
+
 }
