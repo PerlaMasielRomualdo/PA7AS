@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-md navbar-light " id="barra">
-  <a routerLinkActive="active" routerLink="/recipies" class="navbar-brand">Recipes book</a>
+  <a routerLinkActive="active" routerLink="/recipes" class="navbar-brand">Recipes book</a>
   <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav navbar-left">
-      <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/recipies">Recipes</a></li>
+      <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/recipes">Recipes</a></li>
       <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/shoppinglist" >Shopping list</a></li>
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdowm-toggle" id="navbarDropdown" data-toggle="dropdown">
+        <a href="" class="nav-link dropdowm-toggle" id="navbarDropdown" data-toggle="dropdown">
           Manage
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -17,7 +17,7 @@
         </div>
       </li>
       <li class="nav-item"><a class="nav-link" *ngIf="!authService.isUserLoggedIn()" routerLinkActive="active" routerLink="/auth">Login</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="authService.isUserLoggedIn()" routerLink = "/recipies" (click) = "onLogOut()">Logout</a></li>
+      <li class="nav-item"><a class="nav-link" *ngIf="authService.isUserLoggedIn()" routerLink = "/recipes" (click) = "onLogOut()">Logout</a></li>
     </ul>
   </div>
 </nav>
