@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../../services/recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipes-list',
@@ -12,18 +13,17 @@ export class RecipesListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   recipes:Recipe[];
-  Subcription;
+  private sub: Subscription
 
   constructor(private recipeService: RecipeService, 
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.Subcription = this.recipeService.UpdateRecipe.subscribe((r)=>{
-      this.recipes = [];
+    this.recipes = this.recipeService.getRecipes();
+    this.recipeService.UpdateRecipe.subscribe((event) => {
       this.recipes = this.recipeService.getRecipes();
     })
-    this.recipes = this.recipeService.getRecipes();
   }
   onNewRecipe(){
     this.router.navigate(['new'], {relativeTo: this.route});

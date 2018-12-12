@@ -1,6 +1,5 @@
 import { Ingredient } from "../shared/ingredient.model";
 import { EventEmitter } from "@angular/core";
-import { AngularWaitBarrier } from "blocking-proxy/built/lib/angular_wait_barrier";
 import { Subject } from "rxjs";
 
 export class IngredientsService {
@@ -27,20 +26,25 @@ export class IngredientsService {
           this.ingredientsChanged.next(this.ingredients.slice());
       }
 
+      //deletedIngredient(index: number){
+        //this.ingredients.splice(index, 1);
+       // this.ingredientsChanged.next(this.ingredients.slice());
+        //}
+    onDelete(index: number){
+        this.ingredients.splice(index, 1);
+        this.ingredientsChanged.next(this.ingredients.slice());
+     }
+
       addIngredients(auxIngredients: Ingredient[]){
           for(const i of auxIngredients){
               //this.ingredients.push(i);
               var sendIng = this.ingredients.find(Ingredient => Ingredient.name === i.name);
               if (sendIng !== undefined) {
-                sendIng.amount = sendIng.amount + i.amount;
-              }else {
                 this.ingredients.push(i);
+              }else {
+                sendIng.amount = sendIng.amount + i.amount;
           }
           this.ingredientsChanged.next(this.ingredients.slice());
       }
-    }
-    onDelete(index: number){
-        this.ingredients.splice(index, 1);
-        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }

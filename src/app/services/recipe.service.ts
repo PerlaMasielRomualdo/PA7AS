@@ -24,9 +24,8 @@ export class RecipeService {
             new Ingredient('Sauce', 2),
         ])
     ];
-    constructor(private ingredientsService: IngredientsService){
+    constructor(private ingredientsService: IngredientsService){}
 
-    }
       getRecipes(){
           return this.recipes.slice();
       }
@@ -46,10 +45,11 @@ export class RecipeService {
 
       updateRecipe(index: number, recipe: Recipe){
           this.recipes[index] = recipe;
+          this.UpdateRecipe.next(this.recipes.slice());
       }
 
-      onDeleteRecipe(id: number){
-          this.recipes.splice(id, 1);
+      onDeleteRecipe(index: number){
+          this.recipes.splice(index, 1);
           this.UpdateRecipe.next(this.recipes.slice());
       }
 }

@@ -21,4 +21,8 @@ export class SigninComponent implements OnInit {
     this.authService.login(email, password);
     this.router.navigate(['/recipes']);
   }
+
+  onLogout(){
+    
+  }
 }
